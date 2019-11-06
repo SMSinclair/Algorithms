@@ -3,7 +3,14 @@
 import math
 
 def recipe_batches(recipe, ingredients):
-  pass 
+    max_batches = []
+    recipe_reqs = recipe.keys()
+    for req in recipe_reqs:
+        if req not in ingredients.keys():
+            return 0
+        max_batches.append(ingredients[req]//recipe[req])
+    return min(max_batches)
+
 
 
 if __name__ == '__main__':
