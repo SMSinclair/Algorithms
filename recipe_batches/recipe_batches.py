@@ -4,8 +4,7 @@ import math
 
 def recipe_batches(recipe, ingredients):
     max_batches = []
-    recipe_reqs = recipe.keys()
-    for req in recipe_reqs:
+    for req in recipe.keys():
         if req not in ingredients.keys():
             return 0
         max_batches.append(ingredients[req]//recipe[req])

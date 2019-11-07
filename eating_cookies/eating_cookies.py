@@ -6,7 +6,28 @@ import sys
 # a solution that is more efficient than the naive 
 # recursive solution
 def eating_cookies(n, cache=None):
-  pass
+    if cache == None:
+        cache = [0 for i in range(n+1)]
+
+    def cookie_recursive(n):
+        nonlocal cache # look for variable in outer scope
+        # base cases
+        if n<=1:
+            cache[n] = 1
+            return 1
+        if n==2:
+            cache[2] = 2
+            return 2
+        if n==3:
+            cache[3] = 4
+            return 4
+
+        if cache[n]==0: # check cache, add cache[n] if not there
+            cache[n] = cookie_recursive(n-1) + cookie_recursive(n-2) + cookie_recursive(n-3)
+        
+        return cache[n]
+    
+    return cookie_recursive(n)
 
 if __name__ == "__main__":
   if len(sys.argv) > 1:
